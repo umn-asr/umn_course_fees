@@ -1,0 +1,9 @@
+inherit_from: ~/.rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'tasks/rspec.rake'
+
+Style/BlockComments:
+  Enabled: false
