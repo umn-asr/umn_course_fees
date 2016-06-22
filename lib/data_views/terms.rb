@@ -59,6 +59,7 @@ module DataViews
             institution_terms
         )
         SELECT
+          CAST(ora_hash(term_data.strm || term_data.campus_id) AS INTEGER) id,
           term_data.*,
           CASE
             WHEN sysdate BETWEEN begin_date AND end_date
