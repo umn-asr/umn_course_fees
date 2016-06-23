@@ -14,4 +14,4 @@ test -z "$RACK_ENV" &&
   RACK_ENV='development'
 
 # boot the app and any other necessary processes.
-rails s
+./bin/rails s
