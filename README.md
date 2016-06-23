@@ -9,10 +9,16 @@ Data returned follows the [JSON API](http://jsonapi.org/) specification.
 | URL | Description |
 | --- | --- |
 | `/campuses` | All campuses |
+| `/campuses/:campus_id` | A single campus |
+| `/campuses/:campus_id/terms` | All terms with course fee data for a campus |
 
 #### Side-loading
 
 Side-loading follows the [JSON API guidelines](http://jsonapi.org/format/#fetching-includes). For example:
+
+- `campuses/UMNCR?include=terms`
+
+Side loads all terms for a campus as part of the Campus route
 
 ### Development
 
