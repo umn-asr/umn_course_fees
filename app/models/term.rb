@@ -3,6 +3,7 @@ class Term < ActiveRecord::Base
   self.primary_key = "id"
 
   belongs_to :campus
+  has_many :subjects
 
   def active
     current_term == 'true'

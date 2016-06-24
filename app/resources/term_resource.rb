@@ -4,4 +4,5 @@ class TermResource < JSONAPI::Resource
   attributes :campus_id, :strm, :name, :active
 
   has_one :campus
+  has_many :subjects
 end
