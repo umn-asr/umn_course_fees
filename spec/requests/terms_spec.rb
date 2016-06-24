@@ -1,10 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "term routes" do
-  let(:campus_ids) { %w(UMNTC UMNCR UMNRO UMNMO UMNDL) }
-  describe "/campuses/:campus_id/terms" do
+  let(:term_id) { Term.pluck(:id).sample }
+
+  describe "/terms/:term_id/subjects" do
     it "uses JSON API" do
-      get "/campuses/#{campus_ids.sample}/terms"
+      get "/terms/#{term_id}/subjects"
       expect(response.content_type).to eq("application/vnd.api+json")
     end
   end
