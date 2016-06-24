@@ -16,4 +16,11 @@ RSpec.describe "campus routes" do
       expect(response.content_type).to eq("application/vnd.api+json")
     end
   end
+
+  describe "/campuses/:campus_id?include=terms" do
+    it "sideloads in term data" do
+      get "/campuses/#{campus_ids.sample}?include=terms"
+      expect(response.content_type).to eq("application/vnd.api+json")
+    end
+  end
 end
