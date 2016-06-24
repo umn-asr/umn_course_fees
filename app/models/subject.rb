@@ -3,4 +3,5 @@ class Subject < ActiveRecord::Base
   self.primary_key = "id"
 
   belongs_to :term
+  has_many :courses
 end
