@@ -11,8 +11,7 @@ Data returned follows the [JSON API](http://jsonapi.org/) specification.
 | `/campuses` | All campuses |
 | `/campuses/:campus_id` | A single campus |
 | `/campuses/:campus_id/terms` | All terms with course fee data for a campus |
-| `/terms/:term_id/subjects` | All subjects offered by Campus during a Term |
-| `/subjects/:subject_id/courses` | All courses with fees in that Subject for that Campus and Term |
+| `/terms/:term_id/courses` | All courses with fees offered by Campus during a Term |
 
 #### Side-loading
 
@@ -21,11 +20,8 @@ Side-loading follows the [JSON API guidelines](http://jsonapi.org/format/#fetchi
 - `campuses/UMNCR?include=terms`
 Side loads all terms for a campus as part of the Campus route
 
-- `campuses/UMNCR?include=terms.subjects`
-Side loads all terms and subjects for a campus as part of the Campus route
-
-- `campuses/UMNCR?include=terms.subjects.courses`
-Side loads all terms and subjects and courses with fees for a campus as part of the Campus route. This can be exceptionally slow.
+- `campuses/UMNCR?include=terms.courses`
+Side loads all terms and courses for a campus as part of the Campus route. This can be exceptionally slow.
 
 ### Development
 
