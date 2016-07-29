@@ -27,6 +27,7 @@ module DataViews
             #{Ps::TermTbl.table_name}
           WHERE
             acad_career = 'UGRD'
+            and months_between(sysdate, term_end_dt) < 24
         ),
         institution_terms AS (
           SELECT
