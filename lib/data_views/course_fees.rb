@@ -15,6 +15,7 @@ module DataViews
       <<~SQL
       WITH tfms_data AS (
         SELECT
+          cached_courses.crse_id,
           cached_courses.subject,
           cached_courses.catalog_nbr as catalog_number,
           cached_courses.descr as class_name,
@@ -91,6 +92,7 @@ module DataViews
       SELECT
         CAST(ORA_HASH(amount || fee_description || class_name || subject || strm || campus_code) AS INTEGER) id,
         CAST(ORA_HASH(subject || strm || campus_code) AS INTEGER) subject_id,
+        crse_id,
         class_name,
         catalog_number,
         section,
