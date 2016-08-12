@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "2.3.1"
 
-gem "rails", "4.2.6"
+gem "rails", "4.2.7.1"
 gem "activerecord-oracle_enhanced-adapter", "~> 1.6", ">= 1.6.7"
 gem "ruby-oci8", "~> 2.2", ">= 2.2.2"
 gem "view_builder", git: "git@github.umn.edu:asrweb/view_builder.git", ref: "e4fcfbeceeedef11cc0645f573e6d1909147550a"
