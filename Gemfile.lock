@@ -9,6 +9,13 @@ GIT
       encryptor (~> 1.1)
 
 GIT
+  remote: git@github.umn.edu:asrweb/snapshot_builder.git
+  revision: 2a9f44baedcc8d5629b4f9619dececc478f2eaf7
+  ref: 2a9f44baedcc8d5629b4f9619dececc478f2eaf7
+  specs:
+    snapshot_builder (0.1.0)
+
+GIT
   remote: git@github.umn.edu:asrweb/umn_peoplesoft_models.git
   revision: 7f646e8e049a9bb5867ae2e93e46032d689e3603
   ref: 7f646e8e049a9bb5867ae2e93e46032d689e3603
@@ -207,6 +214,7 @@ DEPENDENCIES
   rspec-rails (~> 3.4)
   rubocop
   ruby-oci8 (~> 2.2, >= 2.2.2)
+  snapshot_builder!
   umn_peoplesoft_models!
   view_builder!
 
