@@ -6,10 +6,6 @@ module DataViews
       "course_fees"
     end
 
-    def self.dependencies
-      [DataViews::CutoffDate]
-    end
-
     def self.definition_sql
       <<~SQL
       WITH tfms_data AS (
