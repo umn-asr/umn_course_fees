@@ -12,3 +12,4 @@ echo "==> Updating db..."
 # run all database migrations to ensure everything is up to date.
 bin/rake db:migrate
 bin/rake view_builder:build_all
+bin/rake snapshot_builder:build_all

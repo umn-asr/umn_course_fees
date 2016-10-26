@@ -3,5 +3,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 require_relative "lib/data_views"
+require_relative "lib/data_snapshots"
 
 Rails.application.load_tasks
