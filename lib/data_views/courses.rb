@@ -16,7 +16,6 @@ module DataViews
       ]
     end
 
-    # rubocop:disable Metrics/MethodLength
     def self.definition_sql
       <<~SQL
       SELECT
@@ -54,6 +53,5 @@ module DataViews
       )
       SQL
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end

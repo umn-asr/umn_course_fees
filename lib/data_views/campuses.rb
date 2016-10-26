@@ -12,7 +12,6 @@ module DataViews
       [DataViews::CutoffDate]
     end
 
-    # rubocop:disable Metrics/MethodLength
     def self.definition_sql
       <<~SQL
       SELECT
@@ -70,6 +69,5 @@ module DataViews
         campuses.eff_status = 'A'
       SQL
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end

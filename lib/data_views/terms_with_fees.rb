@@ -7,7 +7,6 @@ module DataViews
       "terms_with_fees"
     end
 
-    # rubocop:disable Metrics/MethodLength
     def self.definition_sql
       <<~SQL
         SELECT
@@ -39,6 +38,5 @@ module DataViews
           strm
       SQL
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end

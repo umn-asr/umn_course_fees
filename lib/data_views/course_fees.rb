@@ -10,7 +10,6 @@ module DataViews
       [DataViews::CutoffDate]
     end
 
-    # rubocop:disable Metrics/MethodLength
     def self.definition_sql
       <<~SQL
       WITH tfms_data AS (
@@ -105,6 +104,5 @@ module DataViews
         class_name, section
       SQL
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end

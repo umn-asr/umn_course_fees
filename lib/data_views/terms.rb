@@ -13,7 +13,6 @@ module DataViews
       [DataViews::TermsWithFees]
     end
 
-    # rubocop:disable Metrics/MethodLength
     def self.definition_sql
       <<~SQL
         WITH all_undergrad_terms AS (
@@ -75,6 +74,5 @@ module DataViews
         order by campus_id, strm
       SQL
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end
