@@ -40,7 +40,10 @@ module DataViews
         INNER JOIN asr_tfms.cached_courses
           ON courses.crse_id=cached_courses.crse_id
           AND courses.crse_offer_nbr=cached_courses.crse_offer_nbr
+        INNER JOIN asr_tfms.revision_statuses
+          ON fee_occurrences.revision_status_id = revision_statuses.id
         WHERE 1=1
+          AND UPPER(revision_statuses.name) = 'CURRENT'
           AND asr_tfms.fee_occurrences.state in ('ready_for_sfit', 'ready_for_peoplesoft', 'fit_for_use')
           AND asr_tfms.fee_dimensions.assessment_method_id in (1)
           AND asr_tfms.fees.type='CourseClass'
