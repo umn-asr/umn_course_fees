@@ -21,5 +21,6 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     ViewBuilder.build_all
+    SnapshotBuilder.build_all
   end
 end
