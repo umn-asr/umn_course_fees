@@ -10,6 +10,10 @@ cd "$(dirname "$0")/.."
 script/bootstrap
 
 echo "===> Setting up DB..."
+if [ -z "$RAILS_ENV" ] && [ -z "$RACK_ENV" ]; then
+  bundle exec lastpassify config/database.example.yml config/database.yml
+fi
+
 bin/rake view_builder:build_all
 
 if [ -z "$RAILS_ENV" ] && [ -z "$RACK_ENV" ]; then
