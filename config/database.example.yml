@@ -1,0 +1,31 @@
+---
+global_defaults: &global_defaults
+  adapter: oracle_enhanced
+
+development: &development
+  <<: *global_defaults
+  host: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_development", field="Hostname") %>
+  database: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_development", field="Database") %>
+  username: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_development", field="username") %>
+  password: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_development", field="password") %>
+
+test: &test
+  <<: *global_defaults
+  host: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_test", field="Hostname") %>
+  database: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_test", field="Database") %>
+  username: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_test", field="username") %>
+  password: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_test", field="password") %>
+
+staging: &staging
+  <<: *global_defaults
+  host: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_staging", field="Hostname") %>
+  database: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_staging", field="Database") %>
+  username: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_staging", field="username") %>
+  password: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_staging", field="password") %>
+
+production: &production
+  <<: *global_defaults
+  host: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_production", field="Hostname") %>
+  database: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_production", field="Database") %>
+  username: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_production", field="username") %>
+  password: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_production", field="password") %>
