@@ -74,7 +74,7 @@ module DataViews
       fall_courses AS (
           SELECT
             tfms_data.*,
-            (year - 1900 || '9') as strm
+            ((year - 1) - 1900 || '9') as strm
           FROM
             tfms_data
           WHERE
