@@ -14,6 +14,7 @@ set :linked_dirs, %w(log tmp)
 set :tmp_dir, File.join(fetch(:deploy_to), "tmp")
 
 set :passenger_restart_with_touch, true
+set :user, 'swadm'
 
 set :ssh_options,
     user: fetch(:user),
