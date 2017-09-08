@@ -1,5 +1,5 @@
 source "https://rubygems.org" do
-  ruby "2.3.1"
+  ruby File.read('.ruby-version', mode: 'rb').chomp
 
   gem "rails", "4.2.7.1"
   gem "activerecord-oracle_enhanced-adapter", "~> 1.6", ">= 1.6.7"
