@@ -1,8 +1,10 @@
-source "https://rubygems.org" do
+source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   ruby File.read('.ruby-version', mode: 'rb').chomp
 
   gem "rails", "4.2.7.1"
   gem "activerecord-oracle_enhanced-adapter", "~> 1.6", ">= 1.6.7"
+  gem "lograge"
+  gem "logstash-event"
   gem "ruby-oci8", "~> 2.2", ">= 2.2.2"
   gem "view_builder", git: "git@github.umn.edu:asrweb/view_builder.git", ref: "e4fcfbeceeedef11cc0645f573e6d1909147550a"
   gem "snapshot_builder", git: "git@github.umn.edu:asrweb/snapshot_builder.git", ref: "2a9f44baedcc8d5629b4f9619dececc478f2eaf7"
@@ -16,17 +18,12 @@ source "https://rubygems.org" do
   end
 
   group :development do
+    gem "lastpassify"
     gem "rubocop"
     gem "overcommit"
     gem "brakeman", "~> 3", require: false
     gem "capistrano", "~> 3.4.0"
     gem "capistrano-rails", "~> 1.1.3"
     gem "capistrano-passenger", "~> 0.1.1"
-  end
-end
-
-source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems-local/" do
-  group :development do
-    gem "lastpassify"
   end
 end
