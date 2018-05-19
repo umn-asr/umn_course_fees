@@ -16,7 +16,7 @@ set :tmp_dir, File.join(fetch(:deploy_to), "tmp")
 set :passenger_restart_with_touch, true
 
 set :ssh_options,
-    user: fetch(:user),
+    user: 'swadm',
     forward_agent: true,
     auth_methods: %w(publickey)
 
