@@ -17,7 +17,7 @@ set :passenger_restart_with_touch, true
 set :user, 'swadm'
 
 set :ssh_options,
-    user: fetch(:user),
+    user: 'swadm',
     forward_agent: true,
     auth_methods: %w(publickey)
 
