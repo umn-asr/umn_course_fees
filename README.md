@@ -2,6 +2,11 @@
 
 Provides data about course fees by campus.
 
+## URLs
+
+- Staging: [http://course-fees-staging.umn.edu](http://course-fees-staging.umn.edu)
+- Production: [http://course-fees.umn.edu](http://course-fees.umn.edu)
+
 ### Routes
 
 Data returned follows the [JSON API](http://jsonapi.org/) specification.
