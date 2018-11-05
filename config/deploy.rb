@@ -21,6 +21,11 @@ set :ssh_options,
     forward_agent: true,
     auth_methods: %w(publickey)
 
+set :role, :web
+set :logrotate_role, :web
+set :logrotate_conf_path, -> { File.join('/swadm/etc', 'logrotate.d', "#{fetch(:application)}_#{fetch(:stage)}") }
+set :logrotate_log_path, -> { File.join(shared_path, 'log') }
+
 namespace :deploy do
   desc 'Update the data_view views'
   task :update_views, [:command] => 'deploy:set_rails_env' do
@@ -34,4 +39,5 @@ namespace :deploy do
   end
 
   after :published, :update_views
+  after :published, 'logrotate:config'
 end
