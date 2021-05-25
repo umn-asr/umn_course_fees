@@ -1,4 +1,4 @@
-FROM asr-docker-local.artifactory.umn.edu/ruby_2_5_oracle_19_0:1.0.0
+FROM asr-docker-local.artifactory.umn.edu/ruby_2_7_oracle_19_10:latest
 
 # Install lastpass-cli dependencies
 RUN \
@@ -47,4 +47,4 @@ ENV MAKE="make --jobs 8"
 
 COPY . .
 
-RUN bundle install --binstubs
+RUN gem install bundler -v "~> 1.17.3" && bundle install --binstubs
