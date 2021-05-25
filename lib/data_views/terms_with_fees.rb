@@ -1,6 +1,4 @@
-=begin
-Term data for terms that have course fees.
-=end
+# Term data for terms that have course fees.
 module DataViews
   class TermsWithFees < ViewBuilder::View
     def self.view_name

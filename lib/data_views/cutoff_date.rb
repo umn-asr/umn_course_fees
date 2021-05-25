@@ -6,10 +6,10 @@ module DataViews
 
     def self.definition_sql
       <<~SQL
-      SELECT
-        sysdate as cutoff
-      FROM
-        DUAL
+        SELECT
+          sysdate as cutoff
+        FROM
+          DUAL
       SQL
     end
   end

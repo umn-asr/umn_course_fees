@@ -1,1 +1,1 @@
-require_relative "./production.rb"
+require_relative "./production"

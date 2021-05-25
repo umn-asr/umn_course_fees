@@ -6,6 +6,9 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+echo "==> Running Standard..."
+bundle exec standardrb --no-fix
+
 echo "==> Checking Gems..."
 bundle exec bundle-audit check --update
 

@@ -5,7 +5,7 @@ module DataSnapshots
     end
 
     def self.indexes
-      %w(id campus_id strm)
+      %w[id campus_id strm]
     end
 
     def self.definition_sql

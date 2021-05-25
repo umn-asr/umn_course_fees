@@ -1,8 +1,6 @@
-=begin
-Term data for all campus/terms that have fees
-This data needs to be at the campus level, but Peoplesoft stores term data at the institution level.
-So we have to create duplicates of UMNTC terms and give them the UMNRO campus id. Otherwis Rochester will have no terms.
-=end
+# Term data for all campus/terms that have fees
+# This data needs to be at the campus level, but Peoplesoft stores term data at the institution level.
+# So we have to create duplicates of UMNTC terms and give them the UMNRO campus id. Otherwis Rochester will have no terms.
 module DataViews
   class Terms < ViewBuilder::View
     def self.view_name
