@@ -66,7 +66,6 @@ GEM
     capistrano-rails (1.1.6)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    childprocess (4.0.0)
     composite_primary_keys (11.3.1)
       activerecord (~> 5.2.4)
     concurrent-ruby (1.1.8)
@@ -78,7 +77,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    iniparse (1.5.0)
     json (2.5.1)
     jsonapi-resources (0.10.5)
       activerecord (>= 4.1)
@@ -109,9 +107,6 @@ GEM
     nokogiri (1.11.5)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    overcommit (0.57.0)
-      childprocess (>= 0.6.3, < 5)
-      iniparse (~> 1.4)
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
@@ -227,7 +222,6 @@ DEPENDENCIES
   lastpassify!
   lograge!
   logstash-event!
-  overcommit!
   peoplesoft_models (~> 0.3.1)!
   rails (= 5.2.6)!
   rspec (~> 3.10.0)!

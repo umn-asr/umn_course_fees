@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ "$SKIP_HOOKS" != "true" ]; then
+  cd "$(dirname "$0")/../.."
+  script/lint
+fi

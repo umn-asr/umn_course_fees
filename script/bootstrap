@@ -23,8 +23,5 @@ bundle check >/dev/null 2>&1  || {
 }
 fi
 
-if [ -f ".overcommit.yml" ]; then
-echo "==> Installing Overcommit hooks…"
-bundle exec overcommit
-bundle exec overcommit --sign
-fi
+echo "==> Creating a pre-commit hook"
+cp script/hooks/* .git/hooks
