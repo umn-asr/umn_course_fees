@@ -1,0 +1,7 @@
+fix: true
+parallel: true
+default_ignores: true
+
+ignore:
+  - 'db/schema.rb'
+  - 'bundle/**/*'

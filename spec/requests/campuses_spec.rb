@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "campus routes" do
-  let(:campus_ids) { %w(UMNTC UMNCR UMNRO UMNMO UMNDL) }
+  let(:campus_ids) { %w[UMNTC UMNCR UMNRO UMNMO UMNDL] }
   let(:small_campus_id) { "UMNCR" }
 
   describe "/campuses" do

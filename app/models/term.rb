@@ -3,9 +3,9 @@ class Term < ActiveRecord::Base
   self.primary_key = "id"
 
   belongs_to :campus
-  has_many   :courses, -> { includes(:subject).includes(:fees).includes(:term) }
+  has_many :courses, -> { includes(:subject).includes(:fees).includes(:term) }
 
   def active
-    current_term == 'true'
+    current_term == "true"
   end
 end
