@@ -26,7 +26,6 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
     gem "capistrano-logrotate", "0.4.0"
     gem "capistrano-passenger", "~> 0.1.1"
     gem "capistrano-rails", "~> 1.1.3"
-    gem "overcommit"
     gem "rubocop"
   end
 end
