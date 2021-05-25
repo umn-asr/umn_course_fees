@@ -1,11 +1,11 @@
 source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   ruby File.read('.ruby-version', mode: 'rb').chomp
 
-  gem "rails", "4.2.7.1"
+  gem "rails", "4.2.11.3"
   gem "activerecord-oracle_enhanced-adapter", "~> 1.6", ">= 1.6.7"
   gem "lograge"
   gem "logstash-event"
-  gem "ruby-oci8", "~> 2.2", ">= 2.2.2"
+  gem "ruby-oci8", "~> 2.2", ">= 2.2.9"
   gem "view_builder", '~> 0.2.0'
   gem "snapshot_builder", '~> 0.7.0'
   gem "peoplesoft_models", '~> 0.2.2'
