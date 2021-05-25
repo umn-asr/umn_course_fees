@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# script/lint: Run our code and security linters
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Checking Gems..."
+bundle exec bundle-audit check --update
+
+echo "==> Running Brakeman..."
+bundle exec brakeman
