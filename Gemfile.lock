@@ -1,4 +1,7 @@
 GEM
+  specs:
+
+GEM
   remote: https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/
   specs:
     actioncable (5.2.6)
@@ -244,4 +247,4 @@ RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   1.17.3
+   2.2.18
