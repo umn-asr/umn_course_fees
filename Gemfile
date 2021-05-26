@@ -23,9 +23,9 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
     gem "lastpassify"
     gem "brakeman", "~> 3", require: false
     gem "bundler-audit"
-    gem "capistrano", "~> 3.4.0"
+    gem "capistrano", "~> 3.16.0"
     gem "capistrano-logrotate", "0.4.0"
     gem "capistrano-passenger", "~> 0.1.1"
-    gem "capistrano-rails", "~> 1.1.3"
+    gem "capistrano-rails", "~> 1.6.1"
   end
 end
