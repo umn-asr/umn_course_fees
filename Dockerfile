@@ -47,6 +47,6 @@ ENV MAKE="make --jobs 8"
 
 COPY . .
 
-RUN gem install bundler -v "~> 1.17.3" && bundle install --binstubs
+RUN gem install bundler -v "~> 2.2.18" && bundle install --binstubs
 
 CMD rails s
