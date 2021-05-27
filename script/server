@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # script/server: Tells Docker to run docker-compose to start containers up and
 # display running logs.
