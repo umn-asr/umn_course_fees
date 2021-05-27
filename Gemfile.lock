@@ -209,8 +209,8 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
-    umn_peoplesoft_models (0.5.0)
-      peoplesoft_models
+    umn_peoplesoft_models (0.13.0)
+      peoplesoft_models (~> 0)
     unicode-display_width (2.0.0)
     view_builder (0.2.0)
     websocket-driver (0.7.4)
@@ -240,7 +240,7 @@ DEPENDENCIES
   ruby-oci8 (~> 2.2, >= 2.2.9)!
   snapshot_builder (~> 0.10.0)!
   standard!
-  umn_peoplesoft_models (~> 0.5.0)!
+  umn_peoplesoft_models (~> 0.13.0)!
   view_builder (~> 0.2.0)!
 
 RUBY VERSION

@@ -11,7 +11,7 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "peoplesoft_models", "~> 0.3.1"
   gem "json", "~> 2.5.1"
   gem "jsonapi-resources"
-  gem "umn_peoplesoft_models", "~> 0.5.0"
+  gem "umn_peoplesoft_models", "~> 0.13.0"
 
   group :development, :test do
     gem "rspec", "~> 3.10.0"
