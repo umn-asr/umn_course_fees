@@ -10,7 +10,7 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "snapshot_builder", "~> 0.10.0"
   gem "peoplesoft_models", "~> 0.3.1"
   gem "json", "~> 2.5.1"
-  gem "jsonapi-resources"
+  gem "jsonapi-resources", "~>0.9.0"
   gem "umn_peoplesoft_models", "~> 0.13.0"
 
   group :development, :test do
