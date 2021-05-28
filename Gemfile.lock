@@ -1,4 +1,7 @@
 GEM
+  specs:
+
+GEM
   remote: https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/
   specs:
     actioncable (5.2.6)
@@ -45,6 +48,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    airbrussh (1.4.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     arel (9.0.0)
     ast (2.4.2)
     brakeman (3.3.1)
@@ -52,20 +57,20 @@ GEM
     bundler-audit (0.8.0)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
-    capistrano (3.4.1)
+    capistrano (3.16.0)
+      airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
-      sshkit (~> 1.3)
-    capistrano-bundler (1.1.4)
+      sshkit (>= 1.9.0)
+    capistrano-bundler (2.0.1)
       capistrano (~> 3.1)
-      sshkit (~> 1.2)
     capistrano-logrotate (0.4.0)
       capistrano (~> 3.0)
     capistrano-passenger (0.1.1)
       capistrano (~> 3.0)
-    capistrano-rails (1.1.6)
+    capistrano-rails (1.6.1)
       capistrano (~> 3.1)
-      capistrano-bundler (~> 1.1)
+      capistrano-bundler (>= 1.1, < 3)
     composite_primary_keys (11.3.1)
       activerecord (~> 5.2.4)
     concurrent-ruby (1.1.8)
@@ -78,7 +83,7 @@ GEM
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     json (2.5.1)
-    jsonapi-resources (0.10.5)
+    jsonapi-resources (0.9.12)
       activerecord (>= 4.1)
       concurrent-ruby
       railties (>= 4.1)
@@ -100,11 +105,11 @@ GEM
     mini_mime (1.1.0)
     mini_portile2 (2.5.1)
     minitest (5.14.4)
-    net-scp (1.2.1)
-      net-ssh (>= 2.6.5)
-    net-ssh (3.1.1)
+    net-scp (3.0.0)
+      net-ssh (>= 2.6.5, < 7.0.0)
+    net-ssh (6.1.0)
     nio4r (2.5.7)
-    nokogiri (1.11.5)
+    nokogiri (1.11.6)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     parallel (1.20.1)
@@ -186,7 +191,7 @@ GEM
     ruby-oci8 (2.2.9)
     ruby-plsql (0.7.1)
     ruby-progressbar (1.11.0)
-    snapshot_builder (0.7.0)
+    snapshot_builder (0.10.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -194,7 +199,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.10.0)
+    sshkit (1.21.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     standard (1.1.1)
@@ -204,8 +209,8 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
-    umn_peoplesoft_models (0.5.0)
-      peoplesoft_models
+    umn_peoplesoft_models (0.13.0)
+      peoplesoft_models (~> 0)
     unicode-display_width (2.0.0)
     view_builder (0.2.0)
     websocket-driver (0.7.4)
@@ -219,12 +224,12 @@ DEPENDENCIES
   activerecord-oracle_enhanced-adapter (~> 5.2.8)!
   brakeman (~> 3)!
   bundler-audit!
-  capistrano (~> 3.4.0)!
+  capistrano (~> 3.16.0)!
   capistrano-logrotate (= 0.4.0)!
   capistrano-passenger (~> 0.1.1)!
-  capistrano-rails (~> 1.1.3)!
+  capistrano-rails (~> 1.6.1)!
   json (~> 2.5.1)!
-  jsonapi-resources!
+  jsonapi-resources (~> 0.9.0)!
   lastpassify!
   lograge!
   logstash-event!
@@ -233,13 +238,13 @@ DEPENDENCIES
   rspec (~> 3.10.0)!
   rspec-rails (~> 4.1.2)!
   ruby-oci8 (~> 2.2, >= 2.2.9)!
-  snapshot_builder (~> 0.7.0)!
+  snapshot_builder (~> 0.10.0)!
   standard!
-  umn_peoplesoft_models (~> 0.5.0)!
+  umn_peoplesoft_models (~> 0.13.0)!
   view_builder (~> 0.2.0)!
 
 RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   1.17.3
+   2.2.18
