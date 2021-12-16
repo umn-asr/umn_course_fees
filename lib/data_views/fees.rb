@@ -16,7 +16,7 @@ module DataViews
     def self.definition_sql
       <<~SQL
         SELECT
-          CAST(ORA_HASH(course_id || amount || fee_type || fee_description ||section ) AS INTEGER) id,
+          CAST(ORA_HASH(course_id || course_fee_id || amount || fee_type || fee_description ||section ) AS INTEGER) id,
           course_id,
           amount,
           fee_type,
@@ -26,6 +26,7 @@ module DataViews
           SELECT
             CAST(ORA_HASH(crse_id || term_id || class_name) AS INTEGER) course_id,
             amount,
+            course_fees.id course_fee_id,
             case fee_type
               when 'PerCredit' then 'Per Credit'
               else fee_type
