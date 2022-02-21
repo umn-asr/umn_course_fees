@@ -1,7 +1,7 @@
 source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   ruby File.read(".ruby-version", mode: "rb").chomp
 
-  gem "rails", "5.2.6"
+  gem "rails", "5.2.6.2"
   gem "activerecord-oracle_enhanced-adapter", "~> 5.2.8"
   gem "lograge"
   gem "logstash-event"
@@ -12,6 +12,7 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "json", "~> 2.5.1"
   gem "jsonapi-resources", "~>0.9.0"
   gem "umn_peoplesoft_models", "~> 0.13.0"
+  gem "nokogiri", "~> 1.13.0"
 
   group :development, :test do
     gem "rspec", "~> 3.10.0"

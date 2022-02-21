@@ -4,10 +4,10 @@ global_defaults: &global_defaults
 
 development: &development
   <<: *global_defaults
-  host: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_development", field="Hostname") %>
-  database: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_development", field="Database") %>
-  username: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_development", field="username") %>
-  password: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_development", field="password") %>
+  host: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_staging", field="Hostname") %>
+  database: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_staging", field="Database") %>
+  username: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_staging", field="username") %>
+  password: <%= lookup("lastpass", "Shared-Applications/course_fees/oracle_staging", field="password") %>
 
 test: &test
   <<: *global_defaults
