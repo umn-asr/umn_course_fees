@@ -4,8 +4,8 @@ Provides data about course fees by campus.
 
 ## URLs
 
-- Staging: [http://course-fees-staging.umn.edu](http://course-fees-staging.umn.edu)
-- Production: [http://course-fees.umn.edu](http://course-fees.umn.edu)
+- Staging: [https://course-fees-staging.umn.edu](https://course-fees-staging.umn.edu)
+- Production: [https://course-fees.umn.edu](https://course-fees.umn.edu)
 
 ## Routes
 
