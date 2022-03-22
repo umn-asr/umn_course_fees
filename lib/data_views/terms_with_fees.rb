@@ -29,6 +29,8 @@ module DataViews
             asr_tfms.fiscal_years
           ON
             fee_occurrences.fiscal_year_id=fiscal_years.id
+          WHERE asr_tfms.fee_occurrences.state
+            IN ('ready_for_sfit', 'ready_for_peoplesoft', 'fit_for_use')
         ) term_codes
         WHERE
           term_codes.strm is not null
