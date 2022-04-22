@@ -45,7 +45,7 @@ module DataViews
             AND UPPER(revision_statuses.name) = 'CURRENT'
             AND asr_tfms.fee_occurrences.state in ('ready_for_sfit', 'ready_for_peoplesoft', 'fit_for_use')
             AND asr_tfms.fee_dimensions.assessment_method_id in (1)
-            AND asr_tfms.fees.type='CourseClass'
+            AND asr_tfms.fees.type IN ('CourseClass', 'DigitalMaterialsRequired', 'DigitalMaterialsOptout')
             AND (
               asr_tfms.courses.class_section < '700'
               OR asr_tfms.courses.class_section >= '800'
