@@ -1,4 +1,7 @@
 GEM
+  specs:
+
+GEM
   remote: https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/
   specs:
     actioncable (5.2.6.3)
