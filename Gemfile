@@ -13,6 +13,7 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "jsonapi-resources", "~>0.9.0"
   gem "umn_peoplesoft_models", "~> 0.13.0"
   gem "nokogiri", "~> 1.13.0"
+  gem "rack-cache", require: "rack/cache"
   gem "rack-cors"
 
   group :development, :test do
