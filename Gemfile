@@ -16,6 +16,8 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "rack-cors"
 
   group :development, :test do
+    gem "bcrypt_pbkdf", ">= 1.0", "< 2.0"
+    gem "ed25519", ">= 1.2", "< 2.0"
     gem "rspec", "~> 3.10.0"
     gem "rspec-rails", "~> 4.1.2"
     gem "standard"
