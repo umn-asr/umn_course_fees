@@ -2,6 +2,7 @@
 
 - [Logs](#Logs)
 - [Splunk](#Splunk)
+- [Checkly](#Checkly)
 - [Alerts](#Alerts)
   - [Exceeding Average SLA](#exceeding-average-sla)
   - [Exceeding Max SLA](#exceeding-max-sla)
@@ -34,6 +35,20 @@ and refine as needed.
 ```
 
 Note. This is in `ms`, so and average of 66 equals 66 milliseconds or `0.066` seconds.
+
+## Checkly
+
+We use the external service [Checkly](https://www.checklyhq.com/) to monitor API availability and uptime. While Splunk can give us the same information, it's also hosted on the same network as our APIs. So if there are network problems, Splunk will be affected by them as well.
+
+### Test Configuration
+
+- `GET` request to `https://course-fees.umn.edu/terms/`
+- Assert that the status code is less than 400
+- Run every 10 minutes
+- Run from locations
+  - N.Virginia
+  - N.California
+- Email alerts to `asrweb@umn.edu`
 
 ## Alerts
 
