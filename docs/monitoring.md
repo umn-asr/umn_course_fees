@@ -10,8 +10,6 @@
 - [Checkly](#Checkly)
   - [Caching and Checkly](#caching-and-checkly)
   - [Checks](#Checks)
-    - [Exceeding Average SLA](#exceeding-average-sla)
-    - [Exceeding Max SLA](#exceeding-max-sla)
 
 ## Logs
 This application writes JSON-formatted Rails logs to disk. These logs are also ingested in to Splunk.
@@ -181,8 +179,8 @@ Use the following configuration for the endpoints we monitor
 #### Assertion & Limits
   - Status Code < 400
   - Response Time < 800ms
-  - For `/UMNTC` check that JSON Body `$.data.id.institution` contains "UMNTC"
-  - For `/UMNTC/terms` check that JSON Body `$.data[0].attributes.campus-id` contains "UMNTC"
+  - For `/UMNTC` check that JSON Body `$.data.id` contains "UMNTC"
+  - For `/UMNTC/terms` check that JSON Body `$.data[0].attributes.strm` is not empty
 #### Scheduling and Locations
   - Run every minute
   - Run from locations
