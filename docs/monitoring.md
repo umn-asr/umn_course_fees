@@ -49,13 +49,11 @@ This application uses our [standard Splunk alerts](https://github.umn.edu/asrweb
 
 See [our Checkly docs](https://github.umn.edu/asrweb/knowledgebucket/tree/main/checkly) for details on what Checkly is and why we use it.
 
-### Caching and Checkly
-
-Most of Checkly's requests will be retrieving cached responses. You may see blips where individual responses are slow. These represent times where Checkly made a request that was not cached.
+This application caches responses using Rack Cache. See more about this in [our Checkly documentation](https://github.umn.edu/asrweb/knowledgebucket/tree/main/checkly#caching-and-checkly).
 
 ### Checks
 
-We use Checkly to monitor 2 endpoints of course-fees.umn.edu.
+This application uses our [standard Checkly API checks](https://github.umn.edu/asrweb/knowledgebucket/tree/main/checkly) to monitor
 
 - https://course-fees.umn.edu/campuses/UMNTC
 - https://course-fees.umn.edu/campuses/UMNTC/terms
@@ -69,29 +67,8 @@ Currently Checkly's API checks can't visit a series of endpoints, so we can't do
 
 Even though we don't check this endpoint directly, we do check it with a Browser Check that loads the One Stop Course Fees Page that ensures everything works.
 
-Use the following configuration for the endpoints we monitor
+#### Additional configuration
 
-#### Type
-  - API Check
-#### Name
-  - Course Fees - Production - [PATH]
-    - Ex: `Course Fees - Production - /campuses/umntc`
-#### Request
-  - `GET` request to one of the endpoints
-#### Assertion & Limits
-  - Status Code < 400
-  - Response Time < 800ms
-  - For `/UMNTC` check that JSON Body `$.data.id` contains "UMNTC"
-  - For `/UMNTC/terms` check that JSON Body `$.data[0].attributes.strm` is not empty
-#### Scheduling and Locations
-  - Run every minute
-  - Run from locations
-    - Ohio
-    - Oregon
-#### Alerting
-  - Double check on failure
-  - Use global account notification settings
-#### Setup & Teardown
-  - N/A
-#### CI/CD
-  - N/A
+The test for `/UMNTC` checks that JSON Body `$.data.id` contains "UMNTC"
+
+The test for `/UMNTC/terms` checks that JSON Body `$.data[0].attributes.strm` is not empty
