@@ -2,11 +2,7 @@
 
 - [Logs](#Logs)
 - [Splunk](#Splunk)
-  - [Caching and Splunk](#caching-and-splunk)
   - [Alerts](#Alerts)
-    - 95% Under 250ms
-    - Average Under 150ms
-    - 5XX HTTP Status
 - [Checkly](#Checkly)
   - [Caching and Checkly](#caching-and-checkly)
   - [Checks](#Checks)
@@ -40,108 +36,14 @@ and refine as needed.
 
 Note. This is in `ms`, so and average of 66 equals 66 milliseconds or `0.066` seconds.
 
-## Caching and Splunk
-
-To improve response speed, this application uses [Rack Cache](https://github.umn.edu/asrweb/umn_course_fees/pull/73). Requests that are served by the cache do not reach Rails and thus are not logged. You will see fewer requests in Splunk than you may expect; and Splunk alerts can only tell you details about un-cached requests.
+This application caches responses using Rack Cache. See more about this in [our Splunk documentation](https://github.umn.edu/asrweb/knowledgebucket/tree/main/splunk#caching-and-splunk).
 
 ## Alerts
 
-### Process 95% of requests in under 250ms
+This application uses our [standard Splunk alerts](https://github.umn.edu/asrweb/knowledgebucket/tree/main/splunk).
 
-Over a day-long span, the server should process 95% of requests in 250ms or less.
-
-The search for this alert is
-
-```
-host="asr-coursefees*"
-sourcetype=ruby_on_rails 
-source="*production*"
-status < 400 |
-timechart span=1d p95(duration) as ninety_five |
-search ninety_five > 250
-```
-
-| Field | Value |
-| -- | -- |
-| Title | Course Fees - Production - Process 95% of requests in under 250ms |
-| Description | Over a day-long span, the server should process 95% of requests in 250ms or less. |
-| Permissions | Shared In App |
-| Alert Type | Scheduled |
-| Schedule | Run every day |
-| Expires | 24 hours |
-| Trigger alert when | Number of results is greater than 0 |
-| Trigger | Once |
-| Throttle | Yes, for 1 day |
-
-Configure Actions to 
-- Email `asrweb@umn.edu`
-- Add to triggered alerts, Medium
-- Post to Slack in `#fixinstuff`
-  - Set webhook URL to `lpass show 5516254219152436639`
-
-### Average response time under 150ms
-
-Over a day-long span, the server should process requests in an average of 200ms or less.
-
-The search for this alert is
-
-```
-host="asr-coursefees*"
-sourcetype=ruby_on_rails 
-source="*production*"
-status < 400 |
-timechart span=1d avg(duration) as average |
-search average > 200
-```
-
-| Field | Value |
-| -- | -- |
-| Title | Course Fees - Production - Average response time under 200ms |
-| Description | Over a day-long span, the server should process requests in an average of 200ms or less. |
-| Permissions | Shared In App |
-| Alert Type | Scheduled |
-| Schedule | Run every day |
-| Expires | 24 hours |
-| Trigger alert when | Number of results is greater than 0 |
-| Trigger | Once |
-| Throttle | Yes, for 1 day |
-
-Configure Actions to 
-- Email `asrweb@umn.edu`
-- Add to triggered alerts, Medium
-- Post to Slack in `#fixinstuff`
-  - Set webhook URL to `lpass show 5516254219152436639`
-
-### 5xx HTTP Status
-
-We should not have 5xx Status Responses
-
-The search for this alert is
-
-```
-host="asr-coursefees*" 
-sourcetype=ruby_on_rails 
-source="*production*" 
-status=5**
-```
-
-| Field | Value |
-| -- | -- |
-| Title | Course Fees - Production - 5xx Status |
-| Description | Course Fees service is emitting 5xx http status |
-| Permissions | Shared In App |
-| Alert Type | Scheduled |
-| Schedule | Run on cron schedule, Last 15 minutes, `*/15 * * * *` |
-| Expires | 24 hours |
-| Trigger alert when | Number of results is greater than 0 |
-| Trigger | Once |
-| Throttle | Yes, for 1 day |
-
-Configure Actions to 
-- Email `asrweb@umn.edu`
-- Add to triggered alerts, Medium
-- Post to Slack in `#fixinstuff`
-  - Set webhook URL to `lpass show 5516254219152436639`
+- The 95th Percentile limit is 250ms
+- The average response time limit is 200ms
 
 ## Checkly
 
