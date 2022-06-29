@@ -8,7 +8,8 @@ module DataViews
     def self.definition_sql
       <<~SQL
         SELECT
-          strm
+          strm,
+          CAST(ora_hash(strm || campus_code) AS INTEGER) term_id
         FROM (
           SELECT
             DISTINCT CASE
@@ -18,13 +19,16 @@ module DataViews
                 fiscal_years.year - 1900 || '3'
               when summer = 1 then
                 fiscal_years.year -1900 || '5'
-            end as strm
+            end as strm,
+            asr_tfms.fees.campus_code
           FROM
             asr_tfms.courses
           INNER JOIN
             asr_tfms.fee_occurrences
           ON
             courses.fee_occurrence_id=fee_occurrences.id
+          LEFT JOIN asr_tfms.fees
+            ON fee_occurrences.fee_id=fees.id
           LEFT JOIN
             asr_tfms.fiscal_years
           ON
