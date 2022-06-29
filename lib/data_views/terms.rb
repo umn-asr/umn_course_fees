@@ -15,6 +15,7 @@ module DataViews
       <<~SQL
         WITH all_undergrad_terms AS (
           SELECT
+            CAST(ora_hash(strm || institution) AS INTEGER) term_id,
             strm,
             institution,
             descr as name,
@@ -34,7 +35,7 @@ module DataViews
           LEFT JOIN
             all_undergrad_terms
           ON
-            all_undergrad_terms.strm = terms_with_fees.strm
+            all_undergrad_terms.term_id = terms_with_fees.term_id
         ), rochester_terms as (
           select
             'UMNRO' as campus_id,
