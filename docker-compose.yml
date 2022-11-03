@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    logging:
+      options:
+        max-size: 50m
+    build: '.'
+    env_file:
+      - '.env'
+    ports:
+      - 3000:3000
+      - 3001:3001
+    volumes:
+      - '.:/app'
+      - '~/.ssh:/home/root/.ssh'
+    entrypoint: ["script/_entrypoint.sh"]
+    command: ./script/_server

@@ -2,7 +2,7 @@ FROM asr-docker-local.artifactory.umn.edu/ruby_2_7_oracle_19_10:latest
 
 # Install lastpass-cli dependencies
 RUN \
- apt-get update && \
+ apt-get --allow-releaseinfo-change update && \
  apt-get -y upgrade && \
  apt-get --no-install-recommends -yqq install \
   bash \
@@ -48,3 +48,5 @@ ENV MAKE="make --jobs 8"
 COPY . .
 
 RUN gem install bundler -v "~> 1.17.3" && bundle install --binstubs
+
+CMD rails s

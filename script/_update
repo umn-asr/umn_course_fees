@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# script/_update: Update application to run for its current checkout.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Updating db..."
+
+bin/rake view_builder:build_all
+
+echo "==> Database ready!"
