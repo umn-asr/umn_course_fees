@@ -8,4 +8,4 @@ set -e
 cd "$(dirname "$0")/.."
 
 docker compose up -d
-docker-compose logs -f web
+docker compose logs -f web
