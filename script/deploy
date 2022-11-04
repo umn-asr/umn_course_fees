@@ -11,5 +11,5 @@ cd "$(dirname "$0")/.."
 if [ -n "$1" ]; then
   docker compose exec web /app/script/_deploy "$1"
 else
-  docker-compose exec web /app/script/_deploy
+  docker compose exec web /app/script/_deploy
 fi
