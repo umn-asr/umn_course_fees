@@ -8,8 +8,13 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+eval `ssh-agent -s`
+ssh-add /home/root/.ssh/id_rsa
+
 if [ -n "$1" ]; then
-  docker compose exec web /app/script/_deploy "$1"
+  echo "===> Deploying to $1"
+  bundle exec cap "$1" deploy
 else
-  docker compose exec web /app/script/_deploy
+  echo "===> Deploying to staging"
+  bundle exec cap staging deploy
 fi

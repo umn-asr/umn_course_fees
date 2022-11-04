@@ -7,10 +7,10 @@ set -e
 cd "$(dirname "$0")/.."
 
 echo "==> Running Standard..."
-bundle exec standardrb --no-fix
+docker compose exec -T web bundle exec standardrb --no-fix
 
 echo "==> Checking Gems..."
-bundle exec bundle-audit check --update
+docker compose exec -T web bundle exec bundle-audit check --update
 
 echo "==> Running Brakeman..."
-bundle exec brakeman
+docker compose exec -T web bundle exec brakeman

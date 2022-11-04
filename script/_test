@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# script/_test: Run test suite for application. Optionally pass in a path to an
+#              individual test file to run a single test.
+
+# This should be run within the docker container, not on your on laptop
+
+echo "==> Running tests..."
+
+if [ -n "$1" ]; then
+  # pass arguments to test call. This is useful for calling a single test.
+  bin/rspec "$1"
+else
+  # run all tests if no arguments are passed in
+  bin/rspec
+fi
