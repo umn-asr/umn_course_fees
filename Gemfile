@@ -1,8 +1,8 @@
 source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   ruby File.read(".ruby-version", mode: "rb").chomp
 
-  gem "rails", "~> 6.1"
-  gem "activerecord-oracle_enhanced-adapter", "~> 6.1"
+  gem "rails", "~> 7.0"
+  gem "activerecord-oracle_enhanced-adapter", "~> 7.0"
   gem "listen"
   gem "lograge"
   gem "logstash-event"
