@@ -1,14 +1,15 @@
 source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   ruby File.read(".ruby-version", mode: "rb").chomp
 
-  gem "rails", "~> 5.2.8.1"
-  gem "activerecord-oracle_enhanced-adapter", "~> 5.2.8"
+  gem "rails", "~> 6.0.6"
+  gem "activerecord-oracle_enhanced-adapter", "~> 6.0.6"
+  gem "listen"
   gem "lograge"
   gem "logstash-event"
   gem "ruby-oci8", "~> 2.2", ">= 2.2.9"
   gem "view_builder", "~> 0.2.0"
   gem "snapshot_builder", "~> 0.10.0"
-  gem "peoplesoft_models", "~> 0.3.1"
+  gem "peoplesoft_models", "~> 0.4.0"
   gem "json", "~> 2.5.1"
   gem "jsonapi-resources", "~>0.9.0"
   gem "umn_peoplesoft_models", "~> 0.13.0"
