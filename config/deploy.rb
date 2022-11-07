@@ -22,6 +22,10 @@ set :ssh_options,
   auth_methods: %w[publickey]
 
 set :role, :web
+
+# Don't run the assets:precompile task on deploy
+set :assets_roles, []
+
 set :logrotate_role, :web
 set :logrotate_conf_path, -> { File.join("/swadm/etc", "logrotate.d", "#{fetch(:application)}_#{fetch(:stage)}") }
 set :logrotate_log_path, -> { File.join(shared_path, "log") }
