@@ -260,7 +260,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-oracle_enhanced-adapter (~> 7.0)!
+  activerecord-oracle_enhanced-adapter (~> 7.0.2)!
   bcrypt_pbkdf (>= 1.0, < 2.0)!
   brakeman (~> 3)!
   bundler-audit!
@@ -279,7 +279,7 @@ DEPENDENCIES
   peoplesoft_models (~> 0.4.0)!
   rack-cache!
   rack-cors!
-  rails (~> 7.0)!
+  rails (~> 7.0.4)!
   rspec (~> 3.10.0)!
   rspec-rails (~> 4.1.2)!
   ruby-oci8 (~> 2.2, >= 2.2.9)!
