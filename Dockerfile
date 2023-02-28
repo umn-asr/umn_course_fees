@@ -1,42 +1,34 @@
-FROM asr-docker-local.artifactory.umn.edu/ruby_2_7_oracle_19_10:latest
+FROM gcc:9-buster AS lpass_builder
 
-# Install lastpass-cli dependencies
-RUN \
- apt-get --allow-releaseinfo-change update && \
- apt-get -y upgrade && \
- apt-get --no-install-recommends -yqq install \
-  bash \
+RUN apt update -y
+
+RUN apt-get --no-install-recommends -yqq install \
   bash-completion \
   build-essential \
-  ca-certificates \
   cmake \
-  curl \
-  g++ \
-  libcurl3-gnutls  \
-  libcurl3-openssl-dev  \
-  libssl1.0 \
-  libssl-dev \
+  libcurl4  \
+  libcurl4-openssl-dev  \
+  libssl-dev  \
   libxml2 \
   libxml2-dev  \
-  make \
-  openssh-client \
+  libssl1.1 \
   pkg-config \
-  tar \
+  ca-certificates \
   xclip
-
-ENV OPENSSL_ROOT_DIR=/usr/bin/openssl
 
 RUN mkdir -p /etc/lastpass-cli && cd /etc/lastpass-cli
 
 # Download and extract lastpass-cli
 RUN curl -fsSL https://github.com/lastpass/lastpass-cli/archive/v1.3.3.tar.gz -o lastpass-cli.tar.gz
 RUN tar -xzf lastpass-cli.tar.gz -C /etc/lastpass-cli --strip-components 1
-# cd into the repo directory
 
-# Follow the "Build" instructions here: https://github.com/lastpass/lastpass-cli#building
-# * make
-# * make install
-RUN export PATH="/usr/bin:$PATH" && export OPENSSL_ROOT_DIR=/usr/bin && cd /etc/lastpass-cli && make && make install
+RUN mkdir -p /lpass
+
+RUN export PATH="/usr/bin:$PATH" && export OPENSSL_ROOT_DIR=/usr/bin && cd /etc/lastpass-cli && PREFIX=/lpass make && PREFIX=/lpass make install
+
+FROM asr-docker-local.artifactory.umn.edu/ruby_2_7_2_node_16_oracle:v0.0.1 as courses
+
+COPY --from=lpass_builder /lpass/bin/lpass /usr/bin/lpass
 
 COPY Gemfile Gemfile.lock ./
 
