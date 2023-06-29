@@ -9,6 +9,7 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "ruby-oci8", "~> 2.2", ">= 2.2.9"
   gem "view_builder", "~> 0.2.0"
   gem "snapshot_builder", "~> 0.10.0"
+  gem "grant_manager", "~> 0.7.0"
   gem "peoplesoft_models", "~> 0.4.0"
   gem "json", "~> 2.5.1"
   gem "jsonapi-resources", "~>0.9.0"

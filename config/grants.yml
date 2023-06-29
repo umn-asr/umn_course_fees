@@ -1,0 +1,14 @@
+# Format
+#
+# target_schema_name:
+#   - username: client_user   # the one who will be granted access to the target schema
+#     with_grant: true|false  # false is the default.
+#     tables:                 # list of tables that the client user will be granted access to. If no tables provided, they will get access to all tables
+#       - table_name
+#       - table_name2
+---
+asr_course_fee_service:
+  - username: asr_db_health
+    with_grant: true
+    tables:
+      - health_scheduled_jobs_details
