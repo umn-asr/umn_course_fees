@@ -1,7 +1,7 @@
 source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   ruby File.read(".ruby-version", mode: "rb").chomp
 
-  gem "rails", "~> 7.0.4"
+  gem "rails", "~> 7.0"
   gem "activerecord-oracle_enhanced-adapter", "~> 7.0.2"
   gem "listen"
   gem "lograge"
@@ -13,7 +13,7 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "json", "~> 2.5.1"
   gem "jsonapi-resources", "~>0.9.0"
   gem "umn_peoplesoft_models", "~> 0.13.0"
-  gem "nokogiri", "~> 1.13.0"
+  gem "nokogiri", "~> 1.14.0"
   gem "rack-cache", require: "rack/cache"
   gem "rack-cors"
 
@@ -27,7 +27,7 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
 
   group :development do
     gem "lastpassify"
-    gem "brakeman", "~> 3", require: false
+    gem "brakeman", "~> 5", require: false
     gem "bundler-audit"
     gem "capistrano", "~> 3.16.0"
     gem "capistrano-logrotate", "0.4.0"
