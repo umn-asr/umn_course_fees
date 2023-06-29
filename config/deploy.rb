@@ -36,9 +36,10 @@ namespace :deploy do
     on primary(:app) do
       within release_path do
         with rails_env: fetch(:rails_env) do
+          execute :rake, "view_builder:build_all"
+          execute :rake, "snapshot_builder:build_all"
           execute :rake, "grant_manager:configure_manager"
           execute :rake, "grant_manager:grant"
-          execute :rake, "view_builder:build_all"
         end
       end
     end
