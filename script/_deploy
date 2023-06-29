@@ -9,7 +9,12 @@ set -e
 cd "$(dirname "$0")/.."
 
 eval `ssh-agent -s`
-ssh-add /home/root/.ssh/id_rsa
+if [ -f /home/root/.ssh/id_rsa ]; then
+    ssh-add /home/root/.ssh/id_rsa
+fi
+if [ -f /home/root/.ssh/id_ed25519 ]; then
+    ssh-add /home/root/.ssh/id_ed25519
+fi
 
 if [ -n "$1" ]; then
   echo "===> Deploying to $1"
