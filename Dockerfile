@@ -19,7 +19,7 @@ RUN apt-get --no-install-recommends -yqq install \
 RUN mkdir -p /etc/lastpass-cli && cd /etc/lastpass-cli
 
 # Download and extract lastpass-cli
-RUN curl -fsSL https://github.com/lastpass/lastpass-cli/archive/v1.3.3.tar.gz -o lastpass-cli.tar.gz
+RUN curl -fsSL https://github.com/lastpass/lastpass-cli/archive/v1.3.6.tar.gz -o lastpass-cli.tar.gz
 RUN tar -xzf lastpass-cli.tar.gz -C /etc/lastpass-cli --strip-components 1
 
 RUN mkdir -p /lpass
