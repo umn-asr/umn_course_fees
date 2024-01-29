@@ -6,6 +6,7 @@ services:
       options:
         max-size: 50m
     build: '.'
+    init: true
     env_file:
       - '.env'
     ports:
@@ -15,4 +16,6 @@ services:
       - '.:/app'
       - '~/.ssh:/home/root/.ssh'
     entrypoint: ["script/_entrypoint.sh"]
+    environment:
+      NLS_LANG: "AMERICAN_AMERICA.WE8ISO8859P1"
     command: ./script/_server

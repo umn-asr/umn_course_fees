@@ -11,6 +11,13 @@ docker compose build
 
 script/bootstrap
 
-docker compose run web script/_setup $(whoami)
+echo "==> Running lpassify"
+  docker run \
+    -it --rm \
+    -e LASTPASS_USERNAME=$(whoami) \
+    -v "$(pwd):/workdir" \
+    --pull=always \
+    asrcustomsolutions/lastpass:latest \
+    lastpassify
 
 echo "==> App is now ready to go!"
