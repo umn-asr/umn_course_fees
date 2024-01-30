@@ -13,3 +13,7 @@ bundle
 !/log/.keep
 /tmp
 database.yml
+
+# Ignore environment files
+.env.production
+.env.staging

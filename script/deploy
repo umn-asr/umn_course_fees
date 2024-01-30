@@ -1,15 +1,49 @@
-#!/bin/sh
+#!/bin/bash
 
-# script/deploy: Deploy the application
-#   change the url opened at the end of the script to the URL of the application, if applicable
-
+# script/deploy: Tells Docker to run its deploy script
 
 set -e
 
+KAMAL_VERSION="1.0.0"
+RAILS_ENV=$1
+
 cd "$(dirname "$0")/.."
 
-if [ -n "$1" ]; then
-  docker compose exec web /app/script/_deploy "$1"
-else
-  docker compose exec web /app/script/_deploy
+if [ $# -eq 0 ]; then
+  echo "Provide a deploy target: script/deploy [production|staging]"
+  exit 1
 fi
+
+echo "==> Deploying"
+
+# populate the deployment environment variables
+docker run \
+  -it --rm \
+  -e LASTPASS_USERNAME=$(whoami) \
+  -v "$(pwd):/workdir" \
+  asrcustomsolutions/lastpass:latest \
+  ./script/_populate_env "$RAILS_ENV"
+
+# push the latest environment variables using Kamal
+docker run -it --rm \
+  -v "$(pwd):/workdir" \
+  -v "$HOME/.ssh:/root/.ssh" \
+  -v "/var/run/docker.sock:/var/run/docker.sock" \
+  ghcr.io/basecamp/kamal:v$KAMAL_VERSION \
+  env push --destination="$RAILS_ENV"
+
+# deploy using Kamal
+docker run -it --rm \
+  -e DOCKER_DEFAULT_PLATFORM="linux/amd64" \
+  -v "$(pwd):/workdir" \
+  -v "$HOME/.ssh:/root/.ssh" \
+  -v "/var/run/docker.sock:/var/run/docker.sock" \
+  ghcr.io/basecamp/kamal:v$KAMAL_VERSION \
+  deploy --destination="$RAILS_ENV"
+
+# update the data_view views
+docker run -it --rm \
+  -v "$(pwd):/workdir" \
+  -v "$HOME/.ssh:/root/.ssh" \
+  ghcr.io/basecamp/kamal:v$KAMAL_VERSION \
+  app exec --destination="$RAILS_ENV" --primary --roles=web --reuse "script/_update_data_views"
