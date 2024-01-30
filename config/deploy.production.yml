@@ -1,0 +1,15 @@
+servers:
+  web:
+    hosts:
+      - asr-conflux-prd-app-01.oit.umn.edu
+    labels:
+      traefik.http.routers.course-fees-web.rule: Host(`course-fees.umn.edu`) || Host(`course-fees.prd.asr.umn.edu`)
+
+env:
+  clear:
+    RAILS_ENV: "production"
+
+logging:
+  driver: journald
+  options:
+    tag: "course-fees-web-production"

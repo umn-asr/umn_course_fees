@@ -1,0 +1,15 @@
+servers:
+  web:
+    hosts:
+      - asr-conflux-qat-app-01.oit.umn.edu
+    labels:
+      traefik.http.routers.course-fees-web.rule: Host(`course-fees-staging.umn.edu`) || Host(`course-fees.qat.asr.umn.edu`)
+
+env:
+  clear:
+    RAILS_ENV: "staging"
+
+logging:
+  driver: journald
+  options:
+    tag: "course-fees-web-staging"

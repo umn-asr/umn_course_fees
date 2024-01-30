@@ -1,0 +1,55 @@
+# Name of your application. Used to uniquely configure containers.
+service: course-fees
+
+# Name of the container image.
+image: umn_course_fees
+
+# Deploy to these servers.
+servers:
+  web:
+    labels:
+      traefik.enable: true
+      traefik.http.routers.course-fees-web.entrypoints: "websecure"
+      traefik.docker.network: "traefik"
+      traefik.http.routers.course-fees-web.tls.certresolver: "sectigo"
+    options:
+      init: true
+      network: "traefik"
+
+# Credentials for your image host.
+registry:
+  server: asr-docker-local.artifactory.umn.edu
+  username:
+    - ARTIFACTORY_USERNAME
+  password:
+    - ARTIFACTORY_API_KEY
+
+# Inject ENV variables into containers (secrets come from .env).
+# Remember to run `kamal env push` after making changes!
+env:
+  secret:
+    - DATABASE_HOST
+    - DATABASE_NAME
+    - DATABASE_PASSWORD
+    - DATABASE_USER
+    - SECRET_KEY_BASE
+
+# Use a different ssh user than root
+ssh:
+  user: swadm
+
+# Configure builder setup.
+builder:
+  dockerfile: Dockerfile.prod
+  multiarch: false
+  args:
+    GIT_COMMIT: <%= %x(git rev-parse --short --verify HEAD) %>
+
+# Configure a custom healthcheck (default is /up on port 3000)
+healthcheck:
+  path: /up
+  port: 3000
+  max_attempts: 15
+  interval: 30s
+
+run_directory: /swadm/traefik2/conf/dynamic/kamal

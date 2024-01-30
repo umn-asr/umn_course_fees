@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+
+# script/_update_data_views: Post deployment task to update the data_view views.
+
+cd "$(dirname "$0")/.."
+
+bin/rake view_builder:build_all
+bin/rake snapshot_builder:build_all
+bin/rake grant_manager:configure_manager
+bin/rake grant_manager:grant

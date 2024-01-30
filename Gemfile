@@ -21,8 +21,6 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "rack-cors"
 
   group :development, :test do
-    gem "bcrypt_pbkdf", ">= 1.0", "< 2.0"
-    gem "ed25519", ">= 1.2", "< 2.0"
     gem "rspec", "~> 3.12.0"
     gem "rspec-rails", "~> 6.1.1"
     gem "standard"
@@ -31,9 +29,5 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   group :development do
     gem "brakeman", "~> 6", require: false
     gem "bundler-audit"
-    gem "capistrano", "~> 3.16.0"
-    gem "capistrano-logrotate", "0.4.0"
-    gem "capistrano-passenger", "~> 0.1.1"
-    gem "capistrano-rails", "~> 1.6.1"
   end
 end
