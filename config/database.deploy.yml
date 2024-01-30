@@ -1,0 +1,19 @@
+default: &default
+  adapter: oracle_enhanced
+  host: <%= ENV["DATABASE_HOST"] %>
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+staging:
+  <<: *default
+
+grantable_staging:
+  <<: *default
+
+production:
+  <<: *default
+  
+grantable_production:
+  <<: *default
