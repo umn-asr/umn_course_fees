@@ -1,7 +1,7 @@
 source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/"
 
 source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
-  ruby File.read(".ruby-version", mode: "rb").chomp
+  ruby "3.2.2"
 
   gem "rails", "~> 7.0"
   gem "activerecord-oracle_enhanced-adapter", "~> 7.0.3"

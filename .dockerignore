@@ -1,0 +1,10 @@
+**/.DS_Store
+.bundle
+.env*
+.git/
+bundle/
+config/database.yml
+config/secrets.yml
+log/
+spec/
+tmp/
