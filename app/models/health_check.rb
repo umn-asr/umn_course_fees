@@ -5,8 +5,7 @@ class HealthCheck
   end
 
   def healthy?(sql: "SELECT 'ready' FROM DUAL")
-    result = ActiveRecord::Base.connection.select_value(sql)
-    result == "ready"
+    ActiveRecord::Base.connection.select_value(sql) == "ready"
   rescue
     false
   end
