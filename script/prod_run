@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+# script/prod_run: Run the production Docker container against the staging or production environments.
+
 cd "$(dirname "$0")/.."
 
 CONTAINER_NAME="$(basename $(pwd))"
@@ -8,7 +10,7 @@ DOCKER_REPO_HOSTNAME="asr-docker-local.artifactory.umn.edu"
 IMAGE_NAME="$DOCKER_REPO_HOSTNAME/$CONTAINER_NAME:latest"
 
 if [ $# -eq 0 ]; then
-  echo "Provide a deploy target: script/prod_run [production|staging]"
+  echo "Provide an environment: script/prod_run [production|staging]"
   exit 1
 fi
 
