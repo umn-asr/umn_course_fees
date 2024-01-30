@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/up", to: "health#show"
+
   root to: "campuses#index"
 
   jsonapi_resources :campuses
