@@ -59,3 +59,8 @@ Run `script/deploy <environment>`. E.g., `script/deploy staging`.
 There's very little to this application on the Rails side of things. It uses [JSON API Resources](https://github.com/cerebris/jsonapi-resources) to handle the views and controllers. Models contain no business logic beyond defining associations.
 
 All of the logic around what data to show is built into the views. Definitions of the views are in [lib/data_views](lib/data_views).
+
+## Owners
+
+Who is responsible for the web application after initial development?
+ * [See this spreadsheet](https://docs.google.com/spreadsheets/d/1JOCG2MZnzsQ_ja8B-pEBqARSXyvoR0TwDb_APO3cdL4/edit?usp=sharing).
