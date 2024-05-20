@@ -12,6 +12,7 @@ servers:
       traefik.http.routers.course-fees-web.entrypoints: "websecure"
       traefik.docker.network: "traefik"
       traefik.http.routers.course-fees-web.tls.certresolver: "sectigo"
+      traefik.http.routers.course-fees-web.middlewares: "maintenance-mode@file"
     options:
       init: true
       network: "traefik"
