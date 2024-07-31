@@ -1,9 +1,9 @@
 servers:
   web:
     hosts:
-      - asr-conflux-prd-app-01.oit.umn.edu
+      - asr-container-prd-web-public-01.oit.umn.edu
     labels:
-      traefik.http.routers.course-fees-web.rule: Host(`course-fees.umn.edu`) || Host(`course-fees.prd.asr.umn.edu`)
+      traefik.http.routers.course-fees-web.rule: Host(`course-fees.umn.edu`) || Host(`course-fees.asr-container-prd-web-public-01.asr.umn.edu`)
 
 env:
   clear:
