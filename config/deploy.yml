@@ -37,20 +37,27 @@ env:
 
 # Use a different ssh user than root
 ssh:
-  user: swadm
+  user: course_fees
 
 # Configure builder setup.
 builder:
   dockerfile: Dockerfile.prod
-  multiarch: false
+  remote:
+    arch: amd64
   args:
+    GID: 3005
     GIT_COMMIT: <%= %x(git rev-parse --short --verify HEAD) %>
+    UID: 3005
 
 # Configure a custom healthcheck (default is /up on port 3000)
 healthcheck:
   path: /up
-  port: 3000
   max_attempts: 15
-  interval: 30s
+  interval: 20s
 
-run_directory: /swadm/traefik2/conf/dynamic/kamal
+# Configure the role used to determine the primary_host. This host takes
+# deploy locks, runs health checks during the deploy, and follow logs, etc.
+#
+# Caution: there's no support for role renaming yet, so be careful to cleanup
+#          the previous role on the deployed hosts.
+primary_role: web

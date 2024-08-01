@@ -1,9 +1,9 @@
 servers:
   web:
     hosts:
-      - asr-conflux-qat-app-01.oit.umn.edu
+      - asr-container-tst-web-public-01.oit.umn.edu
     labels:
-      traefik.http.routers.course-fees-web.rule: Host(`course-fees-staging.umn.edu`) || Host(`course-fees.qat.asr.umn.edu`)
+      traefik.http.routers.course-fees-web.rule: Host(`course-fees-staging.umn.edu`) || Host(`course-fees.asr-container-tst-web-public-01.asr.umn.edu`)
 
 env:
   clear:
