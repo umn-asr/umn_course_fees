@@ -9,10 +9,10 @@ module DataViews
         WITH tfms_data AS (
           SELECT
             fees.id fee_id,
-            cached_courses.crse_id,
-            cached_courses.subject,
-            cached_courses.catalog_nbr as catalog_number,
-            cached_courses.descr as class_name,
+            effective_courses.crse_id,
+            effective_courses.subject,
+            effective_courses.catalog_nbr as catalog_number,
+            effective_courses.descr as class_name,
             fees.campus_code,
             courses.class_section as section,
             fee_categories.name as fee_description,
@@ -36,9 +36,9 @@ module DataViews
             ON fee_dimensions.id=rates.fee_dimension_id
           LEFT JOIN asr_tfms.fiscal_years
             ON fee_occurrences.fiscal_year_id=fiscal_years.id
-          INNER JOIN asr_tfms.cached_courses
-            ON courses.crse_id=cached_courses.crse_id
-            AND courses.crse_offer_nbr=cached_courses.crse_offer_nbr
+          INNER JOIN asr_warehouse.effective_courses
+            ON courses.crse_id=effective_courses.crse_id
+            AND courses.crse_offer_nbr=effective_courses.crse_offer_nbr
           INNER JOIN asr_tfms.revision_statuses
             ON fee_occurrences.revision_status_id = revision_statuses.id
           WHERE 1=1
