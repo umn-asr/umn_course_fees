@@ -1,17 +1,4 @@
-# Health view for scheduled jobs
-module DataSnapshots
-  class HealthScheduledJobsDetails < SnapshotBuilder::Snapshot
-    def self.snapshot_name
-      "health_scheduled_jobs_details"
-    end
-
-    def self.frequency
-      "FREQ=HOURLY;INTERVAL=1"
-    end
-
-    def self.definition_sql
-      <<-SQL
-        WITH latest_logs AS (
+     WITH latest_logs AS (
             SELECT
                 job_name,
                 MAX(log_date) AS log_date
@@ -75,7 +62,3 @@ module DataSnapshots
                 FROM
                     run_details
             ) combined
-      SQL
-    end
-  end
-end

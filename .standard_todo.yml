@@ -2,7 +2,3 @@
 # Remove from this list as you refactor files.
 ---
 ignore:
-- config/initializers/data_snapshots.rb
-- config/initializers/data_views.rb
-- lib/data_snapshots.rb
-- lib/data_views.rb

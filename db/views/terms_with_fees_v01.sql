@@ -1,13 +1,4 @@
-# Term data for terms that have course fees.
-module DataViews
-  class TermsWithFees < ViewBuilder::View
-    def self.view_name
-      "terms_with_fees"
-    end
-
-    def self.definition_sql
-      <<~SQL
-        SELECT
+SELECT
           strm,
           CAST(ora_hash(strm || campus_code) AS INTEGER) term_id
         FROM (
@@ -20,27 +11,23 @@ module DataViews
               when summer = 1 then
                 fiscal_years.year -1900 || '5'
             end as strm,
-            asr_tfms.fees.campus_code
+            tfms_fees.campus_code
           FROM
-            asr_tfms.courses
+            tfms_courses
           INNER JOIN
-            asr_tfms.fee_occurrences
+            tfms_fee_occurrences
           ON
-            courses.fee_occurrence_id=fee_occurrences.id
-          LEFT JOIN asr_tfms.fees
-            ON fee_occurrences.fee_id=fees.id
+            tfms_courses.fee_occurrence_id=tfms_fee_occurrences.id
+          LEFT JOIN tfms_fees
+            ON tfms_fee_occurrences.fee_id=tfms_fees.id
           LEFT JOIN
-            asr_tfms.fiscal_years
+            tfms_fiscal_years
           ON
-            fee_occurrences.fiscal_year_id=fiscal_years.id
-          WHERE asr_tfms.fee_occurrences.state
+            tfms_fee_occurrences.fiscal_year_id=tfms_fiscal_years.id
+          WHERE tfms_fee_occurrences.state
             IN ('ready_for_sfit', 'ready_for_peoplesoft', 'fit_for_use')
         ) term_codes
         WHERE
           term_codes.strm is not null
         ORDER BY
           strm
-      SQL
-    end
-  end
-end

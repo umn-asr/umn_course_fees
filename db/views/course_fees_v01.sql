@@ -1,12 +1,4 @@
-module DataViews
-  class CourseFees < ViewBuilder::View
-    def self.view_name
-      "course_fees"
-    end
-
-    def self.definition_sql
-      <<~SQL
-        WITH tfms_data AS (
+ WITH tfms_data AS (
           SELECT
             fees.id fee_id,
             effective_courses.crse_id,
@@ -23,33 +15,33 @@ module DataViews
             courses.summer,
             fiscal_years.year
           FROM
-            asr_tfms.courses
-          LEFT JOIN asr_tfms.fee_occurrences
+            tfms_courses courses
+          LEFT JOIN tfms_fee_occurrences fee_occurrences
             ON courses.fee_occurrence_id=fee_occurrences.id
-          LEFT JOIN asr_tfms.fees
+          LEFT JOIN tfms_fees fees
             ON fee_occurrences.fee_id=fees.id
-          LEFT JOIN asr_tfms.fee_dimensions
+          LEFT JOIN tfms_fee_dimensions fee_dimensions
             ON fee_occurrences.id=fee_dimensions.fee_occurrence_id
-          LEFT JOIN asr_tfms.fee_categories
+          LEFT JOIN tfms_fee_categories fee_categories
             ON fee_dimensions.fee_category_id=fee_categories.id
-          LEFT JOIN asr_tfms.rates
+          LEFT JOIN tfms_rates rates
             ON fee_dimensions.id=rates.fee_dimension_id
-          LEFT JOIN asr_tfms.fiscal_years
+          LEFT JOIN tfms_fiscal_years fiscal_years
             ON fee_occurrences.fiscal_year_id=fiscal_years.id
-          INNER JOIN asr_warehouse.effective_courses
+          INNER JOIN warehouse_effective_courses effective_courses
             ON courses.crse_id=effective_courses.crse_id
             AND courses.crse_offer_nbr=effective_courses.crse_offer_nbr
-          INNER JOIN asr_tfms.revision_statuses
+          INNER JOIN tfms_revision_statuses revision_statuses
             ON fee_occurrences.revision_status_id = revision_statuses.id
           WHERE 1=1
             AND UPPER(revision_statuses.name) = 'CURRENT'
-            AND asr_tfms.fee_occurrences.state in ('ready_for_sfit', 'ready_for_peoplesoft', 'fit_for_use')
-            AND asr_tfms.fee_dimensions.assessment_method_id in (1)
-            AND asr_tfms.fees.type IN ('CourseClass', 'DigitalMaterialsRequired', 'DigitalMaterialsOptout')
+            AND fee_occurrences.state in ('ready_for_sfit', 'ready_for_peoplesoft', 'fit_for_use')
+            AND fee_dimensions.assessment_method_id in (1)
+            AND fees.type IN ('CourseClass', 'DigitalMaterialsRequired', 'DigitalMaterialsOptout')
             AND (
-              asr_tfms.courses.class_section < '700'
-              OR asr_tfms.courses.class_section >= '800'
-              OR asr_tfms.courses.class_section is null
+              courses.class_section < '700'
+              OR courses.class_section >= '800'
+              OR courses.class_section is null
             )
         ),
         spring_courses AS (
@@ -100,7 +92,3 @@ module DataViews
           all_courses
         ORDER BY
           class_name, section
-      SQL
-    end
-  end
-end

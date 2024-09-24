@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  self.table_name = DataSnapshots::Courses.snapshot_name
+  self.table_name = "courses_daily"
   self.primary_key = "id"
 
   belongs_to :term

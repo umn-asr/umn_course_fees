@@ -1,33 +1,20 @@
-# Contains effective, active Campus details
-# The campus name comes from the Institution, because Campuses do not have complete names.
-module DataViews
-  class Campuses < ViewBuilder::View
-    def self.view_name
-      "campuses"
-    end
-
-    def self.dependencies
-      [DataViews::CutoffDate]
-    end
-
-    def self.definition_sql
-      <<~SQL
-        SELECT
+SELECT
           campuses.campus id,
           campuses.institution,
           campuses.campus,
           institutions.descrformal name
         FROM
-          #{Ps::CampusTbl.table_name} campuses
+          warehouse_cs_ps_campus_tblcampuses
+          
         JOIN (
           SELECT
             institution,
             campus,
             max(effdt) effdt
           FROM
-            #{Ps::CampusTbl.table_name}
+            warehouse_cs_ps_campus_tbl
           WHERE
-            effdt < (select cutoff from #{DataViews::CutoffDate.view_name})
+            effdt < (select cutoff from cutoff_dates)
           GROUP BY
             institution,
             campus
@@ -41,16 +28,16 @@ module DataViews
             institutions.institution,
             institutions.descrformal
           FROM
-            #{Ps::InstitutionTbl.table_name} institutions
+            warehouse_cs_ps_institution_tbl institutions
           JOIN (
             SELECT
               institution,
               campus,
               max(effdt) effdt
             FROM
-              #{Ps::InstitutionTbl.table_name}
+              warehouse_cs_ps_institution_tbl
             WHERE
-              effdt < (select cutoff from #{DataViews::CutoffDate.view_name})
+              effdt < (select cutoff from cutoff_dates)
             GROUP BY
               institution, campus
           ) effective_institutions
@@ -65,7 +52,3 @@ module DataViews
           institutions.institution = campuses.institution
         WHERE
           campuses.eff_status = 'A'
-      SQL
-    end
-  end
-end

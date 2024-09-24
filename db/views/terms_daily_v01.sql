@@ -1,19 +1,4 @@
-# Term data for all campus/terms that have fees
-# This data needs to be at the campus level, but Peoplesoft stores term data at the institution level.
-# So we have to create duplicates of UMNTC terms and give them the UMNRO campus id. Otherwis Rochester will have no terms.
-module DataViews
-  class Terms < ViewBuilder::View
-    def self.view_name
-      "terms"
-    end
-
-    def self.dependencies
-      [DataViews::TermsWithFees]
-    end
-
-    def self.definition_sql
-      <<~SQL
-        WITH all_undergrad_terms AS (
+ WITH all_undergrad_terms AS (
           SELECT
             CAST(ora_hash(strm || institution) AS INTEGER) term_id,
             strm,
@@ -22,7 +7,7 @@ module DataViews
             term_begin_dt as begin_date,
             term_end_dt as end_date
           FROM
-            #{Ps::TermTbl.table_name}
+            warehouse_cs_ps_term_tbl
           WHERE
             acad_career = 'UGRD'
             and months_between(sysdate, term_end_dt) < 24
@@ -31,7 +16,7 @@ module DataViews
           SELECT
             all_undergrad_terms.*
           FROM
-            #{DataViews::TermsWithFees.view_name} terms_with_fees
+            terms_with_fees
           LEFT JOIN
             all_undergrad_terms
           ON
@@ -71,7 +56,3 @@ module DataViews
           SELECT * from non_rochester_terms
         ) term_data
         order by campus_id, strm
-      SQL
-    end
-  end
-end
