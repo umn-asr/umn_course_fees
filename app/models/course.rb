@@ -1,5 +1,4 @@
 class Course < ActiveRecord::Base
-  self.table_name = "courses"
   self.primary_key = "id"
 
   belongs_to :term
