@@ -5,7 +5,5 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-bin/rake view_builder:build_all
-bin/rake snapshot_builder:build_all
 bin/rake grant_manager:configure_manager
 bin/rake grant_manager:grant

@@ -1,21 +1,4 @@
-#   Fees for a course.
-module DataViews
-  class Fees < ViewBuilder::View
-    def self.view_name
-      "fees"
-    end
-
-    def self.dependencies
-      [
-        DataViews::CourseFees,
-        DataViews::Subjects,
-        DataViews::Terms
-      ]
-    end
-
-    def self.definition_sql
-      <<~SQL
-        SELECT
+SELECT
           CAST(ORA_HASH(course_id || course_fee_id || amount || fee_type || fee_description ||section ) AS INTEGER) id,
           course_id,
           amount,
@@ -34,17 +17,13 @@ module DataViews
             fee_description,
             COALESCE(section, 'All') section
           FROM
-            #{DataViews::CourseFees.view_name} course_fees
+            course_fees
           INNER JOIN
-            #{DataViews::Subjects.view_name} subjects
+            subjects_daily
           ON
-            course_fees.subject_id = subjects.id
+            course_fees.subject_id = subjects_daily.id
           INNER JOIN
-            #{DataViews::Terms.view_name} terms
+            terms_daily
           ON
-            subjects.term_id = terms.id
+            subjects_daily.term_id = terms_daily.id
         )
-      SQL
-    end
-  end
-end

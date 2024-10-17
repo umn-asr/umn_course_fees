@@ -9,8 +9,6 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "logstash-event"
   gem "puma"
   gem "ruby-oci8", "~> 2.2", ">= 2.2.9"
-  gem "view_builder", "~> 0.3.0"
-  gem "snapshot_builder", "~> 0.12.0"
   gem "grant_manager", "~> 0.10.0"
   gem "peoplesoft_models", "~> 0.4.0"
   gem "json", "~> 2.7.1"
@@ -19,6 +17,9 @@ source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems/" do
   gem "nokogiri", "~> 1.16.0"
   gem "rack-cache", require: "rack/cache"
   gem "rack-cors"
+  gem "scenic", "~> 1.7"
+  gem "scenic-oracle_adapter", "~> 1.2", ">= 1.2.2"
+  gem "scheduled_refresh", "0.0.4"
 
   group :development, :test do
     gem "rspec", "~> 3.12.0"
